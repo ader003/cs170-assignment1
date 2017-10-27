@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03fa8e72-5250-4ea1-abe5-3e43a449f155" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/treeCreation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/future.txt" afterPath="$PROJECT_DIR$/future.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nPuzzle.py" afterPath="$PROJECT_DIR$/nPuzzle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/treeCreation.py" afterPath="$PROJECT_DIR$/treeCreation.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +15,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="nPuzzle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nPuzzle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nPuzzle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="66" selection-end-column="24" />
+            <state relative-caret-position="232">
+              <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -37,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="treeCreation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="treeCreation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/treeCreation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state relative-caret-position="405">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,8 +54,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/future.txt" />
-        <option value="$PROJECT_DIR$/nPuzzle.py" />
         <option value="$PROJECT_DIR$/treeCreation.py" />
+        <option value="$PROJECT_DIR$/nPuzzle.py" />
       </list>
     </option>
   </component>
@@ -268,6 +266,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/treeCreation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/future.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -278,16 +284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nPuzzle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="66" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/treeCreation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        <state relative-caret-position="232">
+          <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding />
         </state>
       </provider>

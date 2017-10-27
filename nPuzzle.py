@@ -19,7 +19,7 @@ impossible = [[1, 2, 3],
               [4, 5, 6],
               [8, 7, 0]]
 userPuzzle_string = " "
-goalState = [[1, 2, 3],
+eight_goal_state = [[1, 2, 3],
              [4, 5, 6],
              [7, 8, 0]]
 
@@ -36,6 +36,8 @@ def main():
         input(userPuzzle_string)
         user_puzzle = [x for x in userPuzzle_string in userPuzzle_string]
         print(user_puzzle)  # TODO: delete; temporary for for testing purposes
+        user_puzzle_size = x
+        create_goal_state(user_puzzle_size)
     return
 
 
@@ -121,6 +123,16 @@ def move_zero(direction, zero_position):  # TODO: REWRITE; CURRENTLY, MORE LINES
         left_position = position_holder
         return zero_position, left_position
 
+
+def create_goal_state(puzzle_size):  # works under the assumption there was a valid
+    # size (a factor of 3, minus 1) requested
+    puzzle_dimensions = sqrt(puzzle_size + 1)
+    goal_tuples = [x for x in range(0, puzzle_dimensions)]
+    goal_state = []
+    for i in range(0, puzzle_dimensions):
+        goal_state[i] = goal_tuples[i]
+    print(goal_state)  # TODO: REMOVE LATER; PRESENT FOR TESTING PURPOSES
+    return goal_state
 
 if __name__ == '__main__':
     main()
