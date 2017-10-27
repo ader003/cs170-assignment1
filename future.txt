@@ -1,0 +1,2 @@
+1. UI such that a user enters a series of numbers, and it outputs what's needed.
+    (i.e. "1 2 3" == Default puzzle, "Easy" difficulty, Manhattan Distance heuristic)
