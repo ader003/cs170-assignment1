@@ -1,5 +1,5 @@
-# import heapq
-# the different choices in puzzles offered/test cases
+# TODO: link treeCreation.py
+
 trivial = [[1, 2, 3],
            [4, 5, 6],
            [7, 8, 0]]
@@ -120,7 +120,6 @@ def move_zero(direction, zero_position):  # TODO: REWRITE; CURRENTLY, MORE LINES
         zero_position = left_position
         left_position = position_holder
         return zero_position, left_position
-
 
 
 if __name__ == '__main__':
