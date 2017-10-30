@@ -2,3 +2,5 @@
     (i.e. "1 2 3" == Default puzzle, "Easy" difficulty, Manhattan Distance heuristic)
 
 2. Make code cleaner by putting everything into different classes
+
+3. Playing the nPuzzle
