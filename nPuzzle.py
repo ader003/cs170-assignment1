@@ -20,6 +20,7 @@ impossible = [[1, 2, 3],
               [8, 7, 0]]
 userPuzzle_string = " "
 repeatedStates = dict()
+current_repeated_states_index = 0 # to keep track of the current last filled index of the hash table
 
 
 def main():
@@ -80,8 +81,19 @@ def select_and_init_algorithm(puzzle):
 
 
 def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nodes expanded
-    TreeNode(puzzle)
-    cost = 0
+    parent = TreeNode(None, puzzle, 0, 0)
+    hash_in_children = parent.expand_children()
+
+    # TODO: HASH ALL THE STUFF IN THE RETURNED LIST INTO THE REPEATED STATES TABLE
+    hash_in_size = len(hash_in_children)
+    num_repeated_states = repeatedStates.len()
+    for i in range(0, num_repeated_states):
+        for j in range(0, hash_in_size):
+            if repeatedStates[i] != hash_in_children[i]:
+                for k in range(0, hash_in_size):
+                    repeatedStates[i + current_repeated_states_index] = hash_in_children[i]  #TODO: CHECK WITH J
+
+
 
     return cost
 

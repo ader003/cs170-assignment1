@@ -14,8 +14,8 @@ class TreeNode:
 
         self.board = board
         self.parent = parent_node
-        self.g_n = g_n # how far you've travelled (not the heuristic)
-        self.h_n = h_n # the heuristic
+        self.g_n = g_n  # how far you've travelled (not the heuristic)
+        self.h_n = h_n  # the heuristic
 
     def expand_children(self):
         # viable moves
@@ -26,7 +26,7 @@ class TreeNode:
         if z[1] in range(0, 2):
             # can move right
             # c_node is the new child node
-            c_node = self.child_node(z[0], z[1] + 1) # parameters passed in are the new z position coordinates
+            c_node = self.child_node(z[0], z[1] + 1)  # parameters passed in are the new z position coordinates
             children.append(c_node)
         if z[1] in range(1, 3):
             # can move left
