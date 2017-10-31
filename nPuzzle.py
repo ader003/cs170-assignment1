@@ -1,4 +1,4 @@
-# TODO: link treeCreation.py
+import TreeNode.py
 
 trivial = [[1, 2, 3],
            [4, 5, 6],
@@ -21,12 +21,11 @@ impossible = [[1, 2, 3],
 userPuzzle_string = " "
 
 
-
 def main():
     puzzle_mode = input("Welcome to an 8-Puzzle Solver. Type '1' to use a default puzzle, or '2' to create your own."
-                       + '\n')
+                        + '\n')
     if puzzle_mode == "1":
-        print_puzzle(default_puzzle_mode())
+        select_and_init_algorithm(init_default_puzzle_mode())
 
     if puzzle_mode == "2":
         print("Enter your puzzle, using a zero to represent the blank. " +
@@ -39,7 +38,7 @@ def main():
     return
 
 
-def default_puzzle_mode():
+def init_default_puzzle_mode():
     selected_difficulty = input(
         "You wish to use a default puzzle. Please enter a desired difficulty on a scale from 0 to 5." + '\n')
     if selected_difficulty == "0":
@@ -63,25 +62,37 @@ def default_puzzle_mode():
 
 
 def print_puzzle(puzzle):
+    # TODO: ADAPT TO ACCEPT N PUZZLES
     for i in range(0, 3):
         print(puzzle[i])
 
 
-def uniform_cost_search():  # basically BFS, keeping track of how many L's deep you've expanded
-    nodes_expanded = 0  # he wants this data
+def select_and_init_algorithm(puzzle):
+    algorithm = input("Select algorithm. (1) for Uniform Cost Search, (2) for the Misplaced Tile Heuristic, "
+                      "or (3) the Manhattan Distance Heuristic." + '\n')
+    if algorithm == 1:
+        uniform_cost_search(puzzle)
+    if algorithm == 2:
+        misplaced_tile_heuristic(puzzle)
+    if algorithm == 3:
+        manhattan_distance_heuristic(puzzle)
+
+
+def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many L's deep you've expanded
+    num_nodes_expanded = 0  # g_n
     cost = 0
 
-    return cost, nodes_expanded
+    return cost, num_nodes_expanded
 
 
-def misplaced_tile_heuristic():
+def misplaced_tile_heuristic(puzzle):
     nodes_expanded = 0
     cost = 0
 
     return cost, nodes_expanded
 
 
-def manhattan_distance_heuristic():
+def manhattan_distance_heuristic(puzzle):
     nodes_expanded = 0
     cost = 0
 

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03fa8e72-5250-4ea1-abe5-3e43a449f155" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TreeNode.py" afterPath="$PROJECT_DIR$/TreeNode.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nPuzzle.py" afterPath="$PROJECT_DIR$/nPuzzle.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +14,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="nPuzzle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nPuzzle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nPuzzle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="577">
+              <caret line="94" column="39" lean-forward="false" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -45,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TreeNode.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TreeNode.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TreeNode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="149">
               <caret line="12" column="53" lean-forward="false" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
               <folding>
                 <element signature="e#26#38#0" expanded="true" />
@@ -69,8 +68,8 @@
         <option value="$PROJECT_DIR$/play.py" />
         <option value="$PROJECT_DIR$/future.txt" />
         <option value="$PROJECT_DIR$/TreeNodes.py" />
-        <option value="$PROJECT_DIR$/nPuzzle.py" />
         <option value="$PROJECT_DIR$/TreeNode.py" />
+        <option value="$PROJECT_DIR$/nPuzzle.py" />
       </list>
     </option>
   </component>
@@ -313,21 +312,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nPuzzle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TreeNode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="149">
           <caret line="12" column="53" lean-forward="false" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
           <folding>
             <element signature="e#26#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nPuzzle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="94" column="39" lean-forward="false" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
