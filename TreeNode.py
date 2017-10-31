@@ -2,30 +2,24 @@
 import heapq
 import copy
 
+
 class TreeNode:
 
-    def __init__(self, parent_node, board, h_n, g_n):
-        created_tree = 0 # TODO: IMPLEMENT
-        # currently initialized as 0; needs to be an actual tree -- not sure if the tree...
-        # ...should be made here in the constructor,
-        # or if it should be in a separate function, like commented below
+    # TODO: CHANGE TO ACCEPT N PUZZLE
+    eight_goal_state = [[1, 2, 3],
+                        [4, 5, 6],
+                        [7, 8, 0]]
 
-        repeatedStates = dict()
+    def __init__(self, parent_node, board, h_n, g_n):
+
         self.board = board
         self.parent = parent_node
         self.g_n = g_n # how far you've travelled (not the heuristic)
         self.h_n = h_n # the heuristic
 
-    def tree_traversal(self, cost):
-        cost = cost + 1 # TODO: IMPLEMENT
-        # it only costs 1 if it's uniform cost search; tree traversal in general needs to...
-        # ... handle the other two heuristics
-        # TODO: ADD NODE TO THE HASH TABLE
-
-        return cost
-
     def expand_children(self):
-        #viable moves
+        # viable moves
+        # TODO: CHANGE TO ACCEPT N PUZZLE
         children = []
         z = self.zero_position() # position of the zero in the parent
         # the following if statements determine the new position of the 0 in the child node
@@ -64,3 +58,10 @@ class TreeNode:
         child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         # now, the nodes have achieved a similar affect to being expanded
         return child
+
+    def solved(self):
+        # TODO: CHANGE TO ACCEPT N PUZZLE
+        if self.board == self.eight_goal_state:
+            return True
+        else:
+            return False
