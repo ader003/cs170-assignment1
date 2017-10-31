@@ -5,4 +5,4 @@
 
 3. Playing the nPuzzle
 
-4. rewrite everything
+4. better function names

@@ -19,6 +19,12 @@ impossible = [[1, 2, 3],
               [4, 5, 6],
               [8, 7, 0]]
 userPuzzle_string = " "
+
+# TODO: CHANGE TO ACCEPT N PUZZLE
+eight_goal_state = [[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 0]]
+
 repeatedStates = dict()
 current_repeated_states_index = 0 # to keep track of the current last filled index of the hash table
 
@@ -86,16 +92,19 @@ def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nod
 
     # TODO: HASH ALL THE STUFF IN THE RETURNED LIST INTO THE REPEATED STATES TABLE
     hash_in_size = len(hash_in_children)
-    num_repeated_states = repeatedStates.len()
+    num_nodes_expanded = 0
+    num_nodes_expanded = num_nodes_expanded + hash_in_size
+
+    num_repeated_states = len(repeatedStates)
     for i in range(0, num_repeated_states):
         for j in range(0, hash_in_size):
-            if repeatedStates[i] != hash_in_children[i]:
-                for k in range(0, hash_in_size):
-                    repeatedStates[i + current_repeated_states_index] = hash_in_children[i]  #TODO: CHECK WITH J
+            if repeatedStates[i] != hash_in_children[j]:
+                if hash_in_children[j] == eight_goal_state:
+                    return
+                else:
+                    repeatedStates[i + current_repeated_states_index] = hash_in_children[i]  # TODO: CHECK WITH J
 
-
-
-    return cost
+    return num_nodes_expanded
 
 
 def misplaced_tile_heuristic(puzzle):
