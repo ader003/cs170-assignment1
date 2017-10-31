@@ -19,6 +19,7 @@ impossible = [[1, 2, 3],
               [4, 5, 6],
               [8, 7, 0]]
 userPuzzle_string = " "
+repeatedStates = dict()
 
 
 def main():
@@ -78,11 +79,11 @@ def select_and_init_algorithm(puzzle):
         manhattan_distance_heuristic(puzzle)
 
 
-def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many L's deep you've expanded
-    num_nodes_expanded = 0  # g_n
+def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nodes expanded
+    TreeNode(puzzle)
     cost = 0
 
-    return cost, num_nodes_expanded
+    return cost
 
 
 def misplaced_tile_heuristic(puzzle):

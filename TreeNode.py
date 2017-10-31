@@ -21,7 +21,7 @@ class TreeNode:
         # viable moves
         # TODO: CHANGE TO ACCEPT N PUZZLE
         children = []
-        z = self.zero_position() # position of the zero in the parent
+        z = self.zero_position()  # position of the zero in the parent
         # the following if statements determine the new position of the 0 in the child node
         if z[1] in range(0, 2):
             # can move right
@@ -57,6 +57,7 @@ class TreeNode:
         # set parent 0 position to the swapped value
         child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         # now, the nodes have achieved a similar affect to being expanded
+
         return child
 
     def solved(self):
