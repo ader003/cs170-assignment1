@@ -4,3 +4,5 @@
 2. Make code cleaner by putting everything into different classes
 
 3. Playing the nPuzzle
+
+4. rewrite everything
