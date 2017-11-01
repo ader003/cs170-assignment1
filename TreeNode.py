@@ -14,7 +14,7 @@ class TreeNode:
     def expand_children(self):
         # viable moves
         # TODO: CHANGE TO ACCEPT N PUZZLE
-        children = []
+        children = [] # a list of nodes
         z = self.zero_position()  # position of the zero in the parent
         # the following if statements determine the new position of the 0 in the child node
         if z[1] in range(0, 2):
