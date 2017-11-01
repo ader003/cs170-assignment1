@@ -1,4 +1,3 @@
-# TODO link to nPuzzle.py
 import heapq
 import copy
 
@@ -40,6 +39,7 @@ class TreeNode:
             # can move up
             c_node = self.child_node(z[0] + 1, z[1])
             children.append(c_node)
+        return children
 
     def zero_position(self):
         for i in range(0, 3):
@@ -59,6 +59,11 @@ class TreeNode:
         # now, the nodes have achieved a similar affect to being expanded
 
         return child
+
+    def board_to_tuple(self): # TODO: VERIFY IT HANDLES N PUZZLES?
+        for i in range(0, len(self.board)):
+            converted_tuple = tuple(self.board(i))
+        return converted_tuple
 
     def solved(self):
         # TODO: CHANGE TO ACCEPT N PUZZLE

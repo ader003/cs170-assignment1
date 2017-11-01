@@ -1,4 +1,5 @@
-import TreeNode.py
+import TreeNode
+import heapq as min_heap_esque_queue  # because it kinda acts like a min heap
 
 trivial = [[1, 2, 3],
            [4, 5, 6],
@@ -12,7 +13,7 @@ easy = [[1, 2, 0],
 doable = [[0, 1, 2],
           [4, 5, 3],
           [7, 8, 6]]
-ohBoy = [[8, 7, 1],
+oh_boy = [[8, 7, 1],
          [6, 0, 2],
          [5, 4, 3]]
 impossible = [[1, 2, 3],
@@ -24,9 +25,6 @@ userPuzzle_string = " "
 eight_goal_state = [[1, 2, 3],
                     [4, 5, 6],
                     [7, 8, 0]]
-
-repeatedStates = dict()
-current_repeated_states_index = 0 # to keep track of the current last filled index of the hash table
 
 
 def main():
@@ -63,7 +61,7 @@ def init_default_puzzle_mode():
         return doable
     if selected_difficulty == "4":
         print("Difficulty of 'Oh Boy' selected.")
-        return ohBoy
+        return oh_boy
     if selected_difficulty == "5":
         print("Difficulty of 'Impossible' selected.")
         return impossible
@@ -87,22 +85,30 @@ def select_and_init_algorithm(puzzle):
 
 
 def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nodes expanded
-    parent = TreeNode(None, puzzle, 0, 0)
-    hash_in_children = parent.expand_children()
 
-    # TODO: HASH ALL THE STUFF IN THE RETURNED LIST INTO THE REPEATED STATES TABLE
-    hash_in_size = len(hash_in_children)
+    starting_node = TreeNode(None, puzzle, 0, 0)
+    working_queue = []
+    repeated_states = dict()
+    min_heap_esque_queue.heappush(working_queue, starting_node)
     num_nodes_expanded = 0
-    num_nodes_expanded = num_nodes_expanded + hash_in_size
 
-    num_repeated_states = len(repeatedStates)
-    for i in range(0, num_repeated_states):
-        for j in range(0, hash_in_size):
-            if repeatedStates[i] != hash_in_children[j]:
-                if hash_in_children[j] == eight_goal_state:
-                    return
-                else:
-                    repeatedStates[i + current_repeated_states_index] = hash_in_children[i]  # TODO: CHECK WITH J
+    while len(working_queue) > 0:
+        node_from_queue = min_heap_esque_queue.heappop(working_queue) # the node from the queue being considered/checked
+        if node_from_queue.solved():  # check if the current state of the board is the solution
+            # TODO: PRINT TREE TRACE1
+            return node_from_queue
+
+        # Hash in tuples
+        if node_from_queue.board_to_tuple() not in repeated_states:
+            repeated_states[node_from_queue.board_to_tuple()] = "This can literally be anything"
+            # push non-duplicates onto queue
+            num_children = len(node_from_queue.expand_children())
+            for i in range(0, num_children):
+                min_heap_esque_queue.heappush(working_queue, node_from_queue[i])
+                num_nodes_expanded = num_nodes_expanded + 1
+
+    if len(working_queue) == 0:
+        print("Failure. No solution.")
 
     return num_nodes_expanded
 
@@ -121,6 +127,7 @@ def manhattan_distance_heuristic(puzzle):
     return cost, nodes_expanded
 
 
+# TODO: FOR N PUZZLE
 def create_goal_state(puzzle_size):  # works under the assumption there was a valid
     # size (a factor of 3, minus 1) requested
     puzzle_dimensions = sqrt(puzzle_size + 1)
