@@ -76,17 +76,17 @@ def print_puzzle(puzzle):
 def select_and_init_algorithm(puzzle):
     algorithm = input("Select algorithm. (1) for Uniform Cost Search, (2) for the Misplaced Tile Heuristic, "
                       "or (3) the Manhattan Distance Heuristic." + '\n')
-    if algorithm == 1:
+    if algorithm == "1":
         uniform_cost_search(puzzle)
-    if algorithm == 2:
+    if algorithm == "2":
         misplaced_tile_heuristic(puzzle)
-    if algorithm == 3:
+    if algorithm == "3":
         manhattan_distance_heuristic(puzzle)
 
 
 def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nodes expanded
 
-    starting_node = TreeNode(None, puzzle, 0, 0)
+    starting_node = TreeNode.TreeNode(None, puzzle, 0, 0)
     working_queue = []
     repeated_states = dict()
     min_heap_esque_queue.heappush(working_queue, starting_node)
@@ -95,20 +95,24 @@ def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nod
     while len(working_queue) > 0:
         node_from_queue = min_heap_esque_queue.heappop(working_queue) # the node from the queue being considered/checked
         if node_from_queue.solved():  # check if the current state of the board is the solution
-            # TODO: PRINT TREE TRACE1
+            print("yay")
+            # TODO: PRINT TREE TRACE
             return node_from_queue
 
         # Hash in tuples
         if node_from_queue.board_to_tuple() not in repeated_states:
             repeated_states[node_from_queue.board_to_tuple()] = "This can literally be anything"
-            # push non-duplicates onto queue
-            num_children = len(node_from_queue.expand_children())
+            # push non-duplicate parents onto queue
+            children_from_node = node_from_queue.expand_children()
+            num_children = len(children_from_node)
             for i in range(0, num_children):
-                min_heap_esque_queue.heappush(working_queue, node_from_queue[i])
-                num_nodes_expanded = num_nodes_expanded + 1
+                # do not hash duplicate children
+                if children_from_node[i].board_to_tuple() not in repeated_states:
+                    min_heap_esque_queue.heappush(working_queue, children_from_node[i])
+                    num_nodes_expanded = num_nodes_expanded + 1
 
-    if len(working_queue) == 0:
-        print("Failure. No solution.")
+        if len(working_queue) == 0:
+            print("Failure. No solution.")
 
     return num_nodes_expanded
 

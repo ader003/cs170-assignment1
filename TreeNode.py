@@ -33,11 +33,11 @@ class TreeNode:
             children.append(c_node)
         if z[0] in range(0, 2):
             # can move down
-            c_node = self.child_node(z[0] - 1, z[1])
+            c_node = self.child_node(z[0] + 1, z[1])
             children.append(c_node)
         if z[0] in range(1, 3):
             # can move up
-            c_node = self.child_node(z[0] + 1, z[1])
+            c_node = self.child_node(z[0] - 1, z[1])
             children.append(c_node)
         return children
 
@@ -47,13 +47,19 @@ class TreeNode:
                 if self.board[i][j] == 0:
                     return i, j
 
+    def __lt__(self, other): # to tell the priority queue how to queue
+        if self.h_n + self.g_n < other.h_n + other.g_n:
+            return self  # TODO: add a comment to say what in the priority queue is being prioritized
+        else:
+            return other
+
     def child_node(self, y_val, x_val):
         # a copy of the board
         board_copy = copy.deepcopy(self.board)
         # on the parent board: x and y position values of the tile 0 is being swapped with
         swapped_val = board_copy[y_val][x_val]
-        child = TreeNode.TreeNode(self, board_copy, 0, self.g_n + 1)
-        child.board[y_val][x_val] = 0 # the board now has 2 0's
+        child = TreeNode(self, board_copy, 0, self.g_n + 1)
+        child.board[y_val][x_val] = 0  # the board now has 2 0's
         # set parent 0 position to the swapped value
         child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         # now, the nodes have achieved a similar affect to being expanded
@@ -61,9 +67,7 @@ class TreeNode:
         return child
 
     def board_to_tuple(self): # TODO: VERIFY IT HANDLES N PUZZLES?
-        for i in range(0, len(self.board)):
-            converted_tuple = tuple(self.board(i))
-        return converted_tuple
+        return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
 
     def solved(self):
         # TODO: CHANGE TO ACCEPT N PUZZLE
