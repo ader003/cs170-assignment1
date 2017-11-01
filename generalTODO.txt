@@ -1,3 +1,5 @@
-1. Hash repeated states :: CHECK
-2. increment g_n
-3.
+- Option 2 -- User created puzzles
+- Puzzles of N size
+- Misplaced Tile Heuristic
+- Manhattan Distance Heuristic
+- Uniform Cost Search Debugging

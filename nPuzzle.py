@@ -91,15 +91,16 @@ def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nod
     repeated_states = dict()
     min_heap_esque_queue.heappush(working_queue, starting_node)
     num_nodes_expanded = 0
+    repeated_states[starting_node.board_to_tuple()] = "This is the parent board"
 
     stack_to_print = []  # the board states are stored in a stack
 
     while len(working_queue) > 0:
         # the node from the queue being considered/checked
         node_from_queue = min_heap_esque_queue.heappop(working_queue)
-        repeated_states[node_from_queue.board_to_tuple()] = 1
+        # moved to line 95 -- no difference was made
         if node_from_queue.solved():  # check if the current state of the board is the solution
-            print("This message indicates the puzzle was solved. We just don't know how to print the stack trace yet.")
+            print("This message indicates the puzzle was solved. Printing was skipped.")
            #while len(stack_to_print) > 0:
              #   node_to_print = stack_to_print.pop()
              #   print(node_to_print)
@@ -107,24 +108,17 @@ def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nod
             print(num_nodes_expanded)
             return node_from_queue
         # Hash in tuples
-        #if node_from_queue.board_to_tuple() not in repeated_states:
-        repeated_states[node_from_queue.board_to_tuple()] = 1
         # push the non-duplicate parent boards to stack
         # stack_to_print.append(node_from_queue.board)
         # expand children
         children_from_node = node_from_queue.expand_children()  # children_from_node is a list
         # working_queue.pop()  # pop parent
-        num_children = len(children_from_node)  # number of nodes in that list of children
         # push non-duplicate children to working_queue
-        # for i in range(0, num_children):
-        #     if children_from_node[i].board_to_tuple() not in repeated_states:
-        #         min_heap_esque_queue.heappush(working_queue, children_from_node[i])
-        #         num_nodes_expanded = num_nodes_expanded + 1
-        for i in children_from_node:
-            if i.board_to_tuple() not in repeated_states:
-                min_heap_esque_queue.heappush(working_queue, i)
+        for child_node in children_from_node:
+            if child_node.board_to_tuple() not in repeated_states:
+                min_heap_esque_queue.heappush(working_queue, child_node)
                 num_nodes_expanded += 1
-            repeated_states[i.board_to_tuple()] = 1
+            repeated_states[child_node.board_to_tuple()] = "This the newest unique board of an expanded child"
 
     if len(working_queue) == 0:
         print("Failure. No solution.")
