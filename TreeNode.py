@@ -4,11 +4,6 @@ import copy
 
 class TreeNode:
 
-    # TODO: CHANGE TO ACCEPT N PUZZLE
-    eight_goal_state = [[1, 2, 3],
-                        [4, 5, 6],
-                        [7, 8, 0]]
-
     def __init__(self, parent_node, board, h_n, g_n):
 
         self.board = board
@@ -25,20 +20,20 @@ class TreeNode:
         if z[1] in range(0, 2):
             # can move right
             # c_node is the new child node
-            c_node = self.child_node(z[0], z[1] + 1)  # parameters passed in are the new z position coordinates
-            children.append(c_node)
+            c_right_node = self.child_node(z[0], z[1] + 1)  # parameters passed in are the new z position coordinates
+            children.append(c_right_node)
         if z[1] in range(1, 3):
             # can move left
-            c_node = self.child_node(z[0], z[1] - 1)
-            children.append(c_node)
+            c_left_node = self.child_node(z[0], z[1] - 1)
+            children.append(c_left_node)
         if z[0] in range(0, 2):
             # can move down
-            c_node = self.child_node(z[0] + 1, z[1])
-            children.append(c_node)
+            c_down_node = self.child_node(z[0] + 1, z[1])
+            children.append(c_down_node)
         if z[0] in range(1, 3):
             # can move up
-            c_node = self.child_node(z[0] - 1, z[1])
-            children.append(c_node)
+            c_up_node = self.child_node(z[0] - 1, z[1])
+            children.append(c_up_node)
         return children
 
     def zero_position(self):
@@ -63,15 +58,18 @@ class TreeNode:
         # set parent 0 position to the swapped value
         child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         # now, the nodes have achieved a similar affect to being expanded
-
         return child
 
-    def board_to_tuple(self): # TODO: VERIFY IT HANDLES N PUZZLES?
+    def board_to_tuple(self):  # TODO: MAKE IT HANDLES N PUZZLES
         return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
 
-    def solved(self):
-        # TODO: CHANGE TO ACCEPT N PUZZLE
-        if self.board == self.eight_goal_state:
-            return True
-        else:
-            return False
+    def solved(self):  # TODO: CHANGE TO ACCEPT N PUZZLE
+        eight_goal_state = [[1, 2, 3],
+                            [4, 5, 6],
+                            [7, 8, 0]]
+        return self.board == eight_goal_state
+        # eight_goal_state_node = TreeNode(None, eight_goal_state, 0, 0)
+        # if self.board_to_tuple() == eight_goal_state_node.board_to_tuple():
+        #     return True
+        # else:
+        #     return False
