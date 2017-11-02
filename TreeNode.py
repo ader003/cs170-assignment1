@@ -10,55 +10,67 @@ class TreeNode:
         self.parent = parent_node
         self.g_n = g_n  # how far you've travelled (not the heuristic)
         self.h_n = h_n  # the heuristic
+        return
 
     def expand_children(self):
         # viable moves
         # TODO: CHANGE TO ACCEPT N PUZZLE
-        children = [] # a list of nodes
+        children = []  # a list of boards
         z = self.zero_position()  # position of the zero in the parent
         # the following if statements determine the new position of the 0 in the child node
         if z[1] in range(0, 2):
             # can move right
             # c_node is the new child node
-            c_right_node = self.child_node(z[0], z[1] + 1)  # parameters passed in are the new z position coordinates
+            # parameters passed in are the new z position coordinates
+            c_right_node_board = self.child_node(z[0], z[1] + 1)
+            c_right_node = TreeNode(self, c_right_node_board, 0, 0)
             children.append(c_right_node)
         if z[1] in range(1, 3):
             # can move left
-            c_left_node = self.child_node(z[0], z[1] - 1)
+            c_left_node_board = self.child_node(z[0], z[1] - 1)
+            c_left_node = TreeNode(self, c_left_node_board, 0, 0)
             children.append(c_left_node)
         if z[0] in range(0, 2):
             # can move down
-            c_down_node = self.child_node(z[0] + 1, z[1])
+            c_down_node_board = self.child_node(z[0] + 1, z[1])
+            c_down_node = TreeNode(self, c_down_node_board, 0, 0)
             children.append(c_down_node)
         if z[0] in range(1, 3):
             # can move up
-            c_up_node = self.child_node(z[0] - 1, z[1])
+            c_up_node_board = self.child_node(z[0] - 1, z[1])
+            c_up_node = TreeNode(self, c_up_node_board, 0, 0)
             children.append(c_up_node)
         return children
 
     def zero_position(self):
-        for i in range(0, 3):
-            for j in range(0, 3):
+        for i in range(3):
+            for j in range(3):
                 if self.board[i][j] == 0:
-                    return i, j
+                    return [i, j]
 
     def __lt__(self, other): # to tell the priority queue how to queue
-        if self.h_n + self.g_n < other.h_n + other.g_n:
-            return self  # TODO: add a comment to say what in the priority queue is being prioritized
+        if (self.h_n + self.g_n) < (other.h_n + other.g_n):
+            return True  # TODO: add a comment to say what in the priority queue is being prioritized
         else:
-            return other
+            return False
 
     def child_node(self, y_val, x_val):
         # a copy of the board
         board_copy = copy.deepcopy(self.board)
         # on the parent board: x and y position values of the tile 0 is being swapped with
         swapped_val = board_copy[y_val][x_val]
-        child = TreeNode(self, board_copy, 0, self.g_n + 1)
-        child.board[y_val][x_val] = 0  # the board now has 2 0's
+        # child = TreeNode(self, board_copy, 0, self.g_n + 1)
+        # child.board[y_val][x_val] = 0  # the board now has 2 0's
+        board_copy[y_val][x_val] = 0
         # set parent 0 position to the swapped value
-        child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
+        # child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
+        board_copy[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         # now, the nodes have achieved a similar affect to being expanded
-        return child
+        # print("-----")
+        # print(self.board)
+        # print(board_copy)
+        # print("-----")
+        return board_copy
 
     def board_to_tuple(self):  # TODO: MAKE IT HANDLES N PUZZLES
         return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
