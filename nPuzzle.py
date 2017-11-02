@@ -21,7 +21,7 @@ impossible = [[1, 2, 3],
               [8, 7, 0]]
 userPuzzle_string = " "
 
-# TODO: CHANGE TO ACCEPT N PUZZLE
+# FUTURE: CHANGE TO ACCEPT N PUZZLE
 eight_goal_state = [[1, 2, 3],
                     [4, 5, 6],
                     [7, 8, 0]]
@@ -33,14 +33,13 @@ def main():
     if puzzle_mode == "1":
         select_and_init_algorithm(init_default_puzzle_mode())
 
-    if puzzle_mode == "2":
+    if puzzle_mode == "2": # TODO: IMPLEMENT
         print("Enter your puzzle, using a zero to represent the blank. " +
               "Enter each row using a space or tab between each number. RET only when finished." + '\n')
         input(userPuzzle_string)
-        user_puzzle = [x for x in userPuzzle_string in userPuzzle_string]
+        user_puzzle = [x for x in userPuzzle_string] # user puzzle board
         print(user_puzzle)  # TODO: delete; temporary for for testing purposes
-        user_puzzle_size = x
-        create_goal_state(user_puzzle_size)
+        create_goal_state_board(len(user_puzzle))
     return
 
 
@@ -68,7 +67,7 @@ def init_default_puzzle_mode():
 
 
 def print_puzzle(puzzle):
-    # TODO: ADAPT TO ACCEPT N PUZZLES
+    # FUTURE: ADAPT TO ACCEPT N PUZZLES
     for i in range(0, 3):
         print(puzzle[i], '\n')
 
@@ -132,16 +131,19 @@ def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of h
 
     return
 
-# TODO: FOR N PUZZLE
-def create_goal_state(puzzle_size):  # works under the assumption there was a valid
-    # size (a factor of 3, minus 1) requested
-    puzzle_dimensions = sqrt(puzzle_size + 1)
-    goal_tuples = [x for x in range(0, puzzle_dimensions)]
-    goal_state = []
-    for i in range(0, puzzle_dimensions):
-        goal_state[i] = goal_tuples[i]
-    print(goal_state)  # TODO: REMOVE LATER; PRESENT FOR TESTING PURPOSES
-    return goal_state
+# FUTURE: N PUZZLE
+def create_goal_state_board(puzzle_size):
+
+    puzzle_dimensions = (puzzle_size + 1) / 3
+    if (puzzle_size + 1) % 3:
+        print("Invalid puzzle size. Please ensure the size of your puzzle = 3n + 1, for any natural number n.")
+
+    goal_state_board = [x for x in range(0, puzzle_dimensions)]  # user puzzle goal state board
+    goal_state_node = TreeNode.TreeNode(None, goal_state_board, 0, 0)  # user puzzle goal state node
+    goal_state_tuples = goal_state_node.board_to_tuple()  # user puzzle goal state tuple
+
+    print(goal_state_tuples)  # TODO: REMOVE LATER; PRESENT FOR TESTING PURPOSES
+    return goal_state_board
 
 if __name__ == '__main__':
     main()

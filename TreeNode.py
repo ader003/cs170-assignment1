@@ -85,16 +85,16 @@ class TreeNode:
 
         return board_copy
 
-    def board_to_tuple(self):  # TODO: MAKE IT HANDLES N PUZZLES
+    def board_to_tuple(self):  # FUTURE: MAKE IT HANDLES N PUZZLES
         return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
 
-    def solved(self):  # TODO: CHANGE TO ACCEPT N PUZZLE
+    def solved(self):  # FUTURE: CHANGE TO ACCEPT N PUZZLE
         return self.board == eight_goal_state
 
     def find_misplaced_distance(self):
         # take board indexes, check against goal state, (ignore 0s)
         # if they don't match, then increment misplaced_distance
-        # TODO: HANDLE N SIZE PUZZLE
+        # FUTURE: HANDLE N SIZE PUZZLE
         misplaced_distance = 0
         for i in range(0, 3):
             for j in range(0, 3):
@@ -105,7 +105,7 @@ class TreeNode:
 
     def find_manhattan_distance_heuristic(self):
         manhattan_distance = 0
-        # TODO: HANDLE N SIZE PUZZLE
+        # FUTURE: HANDLE N SIZE PUZZLE
         for m in range(0, 3):
             for n in range(0, 3):
                 if self.board[m][n] != 0 and (self.board[m][n] != eight_goal_state[m][n]):

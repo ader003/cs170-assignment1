@@ -1,3 +1,7 @@
+0. Option 2 -- User created puzzles, Puzzles of N size
+
+0.5) Makefile
+
 1. UI such that a user enters a series of numbers, and it outputs what's needed.
     (i.e. "1 2 3" == Default puzzle, "Easy" difficulty, Manhattan Distance heuristic)
 

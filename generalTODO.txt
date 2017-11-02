@@ -1,10 +1,1 @@
-NOW:
-- Option 2 -- User created puzzles
-- Puzzles of N size
-- Manhattan Distance Heuristic
-
-
-
-
-LATER:
-- Uniform Cost Search testing -- it's approximately correct
+we should be done, assignment wise
