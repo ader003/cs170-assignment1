@@ -70,7 +70,7 @@ def init_default_puzzle_mode():
 def print_puzzle(puzzle):
     # TODO: ADAPT TO ACCEPT N PUZZLES
     for i in range(0, 3):
-        print(puzzle[i] + '\n')
+        print(puzzle[i], '\n')
 
 
 def select_and_init_algorithm(puzzle):
@@ -111,7 +111,7 @@ def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of h
             print(node_from_queue.board)
             print("Number of nodes expanded: ")
             print(num_nodes_expanded)
-            print("max", max_queue_size)
+            print("Max queue size:", max_queue_size)
             return node_from_queue
         # push the non-duplicate parent boards to stack
         stack_to_print.append(node_from_queue.board)

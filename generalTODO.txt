@@ -1,7 +1,6 @@
 NOW:
 - Option 2 -- User created puzzles
 - Puzzles of N size
-- Misplaced Tile Heuristic
 - Manhattan Distance Heuristic
 
 

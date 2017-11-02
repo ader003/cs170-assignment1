@@ -4,6 +4,16 @@ eight_goal_state = [[1, 2, 3],
                     [4, 5, 6],
                     [7, 8, 0]]
 
+manhattan_distance_matrix = [[0, 1, 2, 1, 2, 3, 2, 3],
+                             [1, 0, 1, 2, 1, 2, 3, 2],
+                             [2, 1, 0, 3, 2, 1, 4, 3],
+                             [1, 2, 3, 0, 1, 2, 1, 2],
+                             [2, 1, 2, 1, 0, 1, 2, 1],
+                             [3, 2, 1, 2, 1, 0, 1, 2],
+                             [2, 3, 4, 1, 2, 1, 0, 1],
+                             [3, 2, 3, 2, 1, 2, 1, 0]]
+
+
 class TreeNode:
 
     def __init__(self, parent_node, board, h_n, g_n):
@@ -14,12 +24,12 @@ class TreeNode:
         self.h_n = h_n  # the heuristic
         return
 
-    def expand_children(self, heuristic):  # TODO: ADD PARAMETER DETAILING WHICH PARAMETER SHOULD BE USED, IF ANY
+    def expand_children(self, heuristic):
 
         if heuristic == 0:
             g_n = 0
         elif heuristic == 1:
-            g_n = self.find_misplaced_distance()  # TODO: WHY IS self.find_misplaced_distance()?
+            g_n = self.find_misplaced_distance()
         elif heuristic == 2:
             g_n = self.find_manhattan_distance_heuristic()
 
@@ -86,7 +96,6 @@ class TreeNode:
         # if they don't match, then increment misplaced_distance
         # TODO: HANDLE N SIZE PUZZLE
         misplaced_distance = 0
-        #puzzle_tuple = puzzle.board_to_tuple()
         for i in range(0, 3):
             for j in range(0, 3):
                 if self.board[i][j] != 0 and (self.board[i][j] != eight_goal_state[i][j]):
@@ -95,5 +104,10 @@ class TreeNode:
         return misplaced_distance
 
     def find_manhattan_distance_heuristic(self):
-
-        return 2
+        manhattan_distance = 0
+        # TODO: HANDLE N SIZE PUZZLE
+        for i in range(0, 8):
+            for j in range(0, 8):
+                if self.board[i][j] != 0 and (self.board[i][j] != eight_goal_state[i][j]):
+                    manhattan_distance += manhattan_distance_matrix[i][j]
+        return manhattan_distance
