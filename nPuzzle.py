@@ -77,25 +77,27 @@ def select_and_init_algorithm(puzzle):
     algorithm = input("Select algorithm. (1) for Uniform Cost Search, (2) for the Misplaced Tile Heuristic, "
                       "or (3) the Manhattan Distance Heuristic." + '\n')
     if algorithm == "1":
-        uniform_cost_search(puzzle)
+        uniform_cost_search(puzzle, 0)
     if algorithm == "2":
-        misplaced_tile_heuristic(puzzle)
+        uniform_cost_search(puzzle, 1)
     if algorithm == "3":
-        manhattan_distance_heuristic(puzzle)
+        uniform_cost_search(puzzle, 2)
 
 
-def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nodes expanded
+def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of how many nodes expanded
 
     starting_node = TreeNode.TreeNode(None, puzzle, 0, 0)
     working_queue = []
     repeated_states = dict()
     min_heap_esque_queue.heappush(working_queue, starting_node)
     num_nodes_expanded = 0
+    max_queue_size = 0
     repeated_states[starting_node.board_to_tuple()] = "This is the parent board"
 
     stack_to_print = []  # the board states are stored in a stack
 
     while len(working_queue) > 0:
+        max_queue_size = max(len(working_queue), max_queue_size)
         # the node from the queue being considered/checked
         node_from_queue = min_heap_esque_queue.heappop(working_queue)
         repeated_states[node_from_queue.board_to_tuple()] = "hell"
@@ -103,16 +105,18 @@ def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nod
         # print(node_from_queue.board, node_from_queue.g_n)
         if node_from_queue.solved():  # check if the current state of the board is the solution
             print("This message indicates the puzzle was solved. Printing was skipped.")
-            while len(stack_to_print) > 0:
-                node_to_print = stack_to_print.pop()
-                print(node_to_print)
+            # while len(stack_to_print) > 0:
+            #    node_to_print = stack_to_print.pop()
+            #    print(node_to_print)
+            print(node_from_queue.board)
             print("Number of nodes expanded: ")
             print(num_nodes_expanded)
+            print("max", max_queue_size)
             return node_from_queue
         # push the non-duplicate parent boards to stack
         stack_to_print.append(node_from_queue.board)
         # expand children : children_from_node is a list of expanded children's nodes
-        children_from_node = node_from_queue.expand_children()
+        children_from_node = node_from_queue.expand_children(heuristic)
         # push non-duplicate children to working_queue
         for expanded_child in children_from_node:
             if expanded_child.board_to_tuple() not in repeated_states:
@@ -122,24 +126,11 @@ def uniform_cost_search(puzzle):  # basically BFS, keeping track of how many nod
             repeated_states[expanded_child.board_to_tuple()] = "This the newest unique board of an expanded child"
 
     if len(working_queue) == 0:
+        print(num_nodes_expanded)
+        print(max_queue_size)
         print("Failure. No solution.")
 
     return
-
-
-def misplaced_tile_heuristic(puzzle):
-    nodes_expanded = 0
-    cost = 0
-
-    return cost, nodes_expanded
-
-
-def manhattan_distance_heuristic(puzzle):
-    nodes_expanded = 0
-    cost = 0
-
-    return cost, nodes_expanded
-
 
 # TODO: FOR N PUZZLE
 def create_goal_state(puzzle_size):  # works under the assumption there was a valid

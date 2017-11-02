@@ -1,6 +1,8 @@
-import heapq
 import copy
 
+eight_goal_state = [[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 0]]
 
 class TreeNode:
 
@@ -12,7 +14,15 @@ class TreeNode:
         self.h_n = h_n  # the heuristic
         return
 
-    def expand_children(self):
+    def expand_children(self, heuristic):  # TODO: ADD PARAMETER DETAILING WHICH PARAMETER SHOULD BE USED, IF ANY
+
+        if heuristic == 0:
+            g_n = 0
+        elif heuristic == 1:
+            g_n = self.find_misplaced_distance()  # TODO: WHY IS self.find_misplaced_distance()?
+        elif heuristic == 2:
+            g_n = self.find_manhattan_distance_heuristic()
+
         # viable moves
         # TODO: CHANGE TO ACCEPT N PUZZLE
         children = []  # a list of boards
@@ -23,22 +33,22 @@ class TreeNode:
             # c_node is the new child node
             # parameters passed in are the new z position coordinates
             c_right_node_board = self.child_node(z[0], z[1] + 1)
-            c_right_node = TreeNode(self, c_right_node_board, 0, 0)
+            c_right_node = TreeNode(self, c_right_node_board, self.h_n + 1, g_n)
             children.append(c_right_node)
         if z[1] in range(1, 3):
             # can move left
             c_left_node_board = self.child_node(z[0], z[1] - 1)
-            c_left_node = TreeNode(self, c_left_node_board, 0, 0)
+            c_left_node = TreeNode(self, c_left_node_board, self.h_n + 1, g_n)
             children.append(c_left_node)
         if z[0] in range(0, 2):
             # can move down
             c_down_node_board = self.child_node(z[0] + 1, z[1])
-            c_down_node = TreeNode(self, c_down_node_board, 0, 0)
+            c_down_node = TreeNode(self, c_down_node_board, self.h_n + 1, g_n)
             children.append(c_down_node)
         if z[0] in range(1, 3):
             # can move up
             c_up_node_board = self.child_node(z[0] - 1, z[1])
-            c_up_node = TreeNode(self, c_up_node_board, 0, 0)
+            c_up_node = TreeNode(self, c_up_node_board, self.h_n + 1, g_n)
             children.append(c_up_node)
         return children
 
@@ -49,10 +59,7 @@ class TreeNode:
                     return [i, j]
 
     def __lt__(self, other): # to tell the priority queue how to queue
-        if (self.h_n + self.g_n) < (other.h_n + other.g_n):
-            return True  # TODO: add a comment to say what in the priority queue is being prioritized
-        else:
-            return False
+        return (self.h_n + self.g_n) < (other.h_n + other.g_n)
 
     def child_node(self, y_val, x_val):
         # a copy of the board
@@ -65,23 +72,28 @@ class TreeNode:
         # set parent 0 position to the swapped value
         # child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         board_copy[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
-        # now, the nodes have achieved a similar affect to being expanded
-        # print("-----")
-        # print(self.board)
-        # print(board_copy)
-        # print("-----")
+
         return board_copy
 
     def board_to_tuple(self):  # TODO: MAKE IT HANDLES N PUZZLES
         return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
 
     def solved(self):  # TODO: CHANGE TO ACCEPT N PUZZLE
-        eight_goal_state = [[1, 2, 3],
-                            [4, 5, 6],
-                            [7, 8, 0]]
         return self.board == eight_goal_state
-        # eight_goal_state_node = TreeNode(None, eight_goal_state, 0, 0)
-        # if self.board_to_tuple() == eight_goal_state_node.board_to_tuple():
-        #     return True
-        # else:
-        #     return False
+
+    def find_misplaced_distance(self):
+        # take board indexes, check against goal state, (ignore 0s)
+        # if they don't match, then increment misplaced_distance
+        # TODO: HANDLE N SIZE PUZZLE
+        misplaced_distance = 0
+        #puzzle_tuple = puzzle.board_to_tuple()
+        for i in range(0, 3):
+            for j in range(0, 3):
+                if self.board[i][j] != 0 and (self.board[i][j] != eight_goal_state[i][j]):
+                    misplaced_distance += 1
+        self.g_n = misplaced_distance
+        return misplaced_distance
+
+    def find_manhattan_distance_heuristic(self):
+
+        return 2
