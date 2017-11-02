@@ -106,8 +106,8 @@ class TreeNode:
     def find_manhattan_distance_heuristic(self):
         manhattan_distance = 0
         # TODO: HANDLE N SIZE PUZZLE
-        for i in range(0, 8):
-            for j in range(0, 8):
-                if self.board[i][j] != 0 and (self.board[i][j] != eight_goal_state[i][j]):
-                    manhattan_distance += manhattan_distance_matrix[i][j]
+        for m in range(0, 3):
+            for n in range(0, 3):
+                if self.board[m][n] != 0 and (self.board[m][n] != eight_goal_state[m][n]):
+                    manhattan_distance += manhattan_distance_matrix[self.board[m][n] - 1][eight_goal_state[m][n] - 1]
         return manhattan_distance
