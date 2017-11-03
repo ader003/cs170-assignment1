@@ -35,7 +35,6 @@ class TreeNode:
             g_n = self.find_manhattan_distance_heuristic()
 
         # viable moves
-        # TODO: CHANGE TO ACCEPT N PUZZLE
         children = []  # a list of boards
         z = self.zero_position()  # position of the zero in the parent
         # the following if statements determine the new position of the 0 in the child node
@@ -69,7 +68,7 @@ class TreeNode:
                 if self.board[i][j] == 0:
                     return [i, j]
 
-    def __lt__(self, other): # to tell the priority queue how to queue
+    def __lt__(self, other):  # to tell the priority queue how to queue
         return (self.h_n + self.g_n) < (other.h_n + other.g_n)
 
     def child_node(self, y_val, x_val):
