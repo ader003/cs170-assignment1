@@ -4,6 +4,7 @@ eight_goal_state = [[1, 2, 3],
                     [4, 5, 6],
                     [7, 8, 0]]
 
+# a matrix of distances, matrix[i][j] = manhattan distance from i to j
 manhattan_distance_matrix = [[0, 1, 2, 1, 2, 3, 2, 3],
                              [1, 0, 1, 2, 1, 2, 3, 2],
                              [2, 1, 0, 3, 2, 1, 4, 3],
@@ -20,8 +21,8 @@ class TreeNode:
 
         self.board = board
         self.parent = parent_node
-        self.g_n = g_n  # how far you've travelled (not the heuristic)
-        self.h_n = h_n  # the heuristic
+        self.g_n = g_n
+        self.h_n = h_n
         return
 
     def expand_children(self, heuristic):
@@ -76,16 +77,13 @@ class TreeNode:
         board_copy = copy.deepcopy(self.board)
         # on the parent board: x and y position values of the tile 0 is being swapped with
         swapped_val = board_copy[y_val][x_val]
-        # child = TreeNode(self, board_copy, 0, self.g_n + 1)
-        # child.board[y_val][x_val] = 0  # the board now has 2 0's
         board_copy[y_val][x_val] = 0
         # set parent 0 position to the swapped value
-        # child.board[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
         board_copy[self.zero_position()[0]][self.zero_position()[1]] = swapped_val
 
         return board_copy
 
-    def board_to_tuple(self):  # FUTURE: MAKE IT HANDLES N PUZZLES
+    def board_to_tuple(self):  # FUTURE: MAKE IT HANDLE N PUZZLES
         return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
 
     def solved(self):  # FUTURE: CHANGE TO ACCEPT N PUZZLE
@@ -94,7 +92,6 @@ class TreeNode:
     def find_misplaced_distance(self):
         # take board indexes, check against goal state, (ignore 0s)
         # if they don't match, then increment misplaced_distance
-        # FUTURE: HANDLE N SIZE PUZZLE
         misplaced_distance = 0
         for i in range(0, 3):
             for j in range(0, 3):
@@ -105,7 +102,6 @@ class TreeNode:
 
     def find_manhattan_distance_heuristic(self):
         manhattan_distance = 0
-        # FUTURE: HANDLE N SIZE PUZZLE
         for m in range(0, 3):
             for n in range(0, 3):
                 if self.board[m][n] != 0 and (self.board[m][n] != eight_goal_state[m][n]):

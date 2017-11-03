@@ -1,5 +1,4 @@
 import TreeNode
-import copy
 import heapq as min_heap_esque_queue  # because it kinda acts like a min heap
 
 trivial = [[1, 2, 3],
@@ -21,7 +20,6 @@ impossible = [[1, 2, 3],
               [4, 5, 6],
               [8, 7, 0]]
 
-# FUTURE: CHANGE TO ACCEPT N PUZZLE
 eight_goal_state = [[1, 2, 3],
                     [4, 5, 6],
                     [7, 8, 0]]
@@ -34,16 +32,23 @@ def main():
         select_and_init_algorithm(init_default_puzzle_mode())
 
     if puzzle_mode == "2":  # TODO: IMPLEMENT
-        user_puzzle_string = input("Enter your puzzle, using a zero to represent the blank. " +
-                                   "Please only enter valid 8-puzzles. Enter the puzzle demilimiting " +
-                                   "the numbers with a space. RET only when finished." + '\n')
-        print("User puzzle string: ", user_puzzle_string, '\n')  # TODO: delete; temporary for for testing purposes
-        user_puzzle = user_puzzle_string.split()
-        for i in range(0, len(user_puzzle)):
-            user_puzzle[i] = int(user_puzzle[i])
-        # print("User puzzle (list): ", user_puzzle)
-        # print("Length of user puzzle: ", len(user_puzzle))
-        # create_goal_state_board(len(user_puzzle))
+        print("Enter your puzzle, using a zero to represent the blank. " +
+              "Please only enter valid 8-puzzles. Enter the puzzle demilimiting " +
+              "the numbers with a space. RET only when finished." + '\n')
+        puzzle_row_one = input("Enter the first row: ")
+        puzzle_row_two = input("Enter the second row: ")
+        puzzle_row_three = input("Enter the third row: ")
+
+        puzzle_row_one = puzzle_row_one.split()
+        puzzle_row_two = puzzle_row_two.split()
+        puzzle_row_three = puzzle_row_three.split()
+
+        for i in range(0, 3):
+            puzzle_row_one[i] = int(puzzle_row_one[i])
+            puzzle_row_two[i] = int(puzzle_row_two[i])
+            puzzle_row_three[i] = int(puzzle_row_three[i])
+
+        user_puzzle = [puzzle_row_one, puzzle_row_two, puzzle_row_three]
         select_and_init_algorithm(user_puzzle)
 
     return
@@ -73,9 +78,8 @@ def init_default_puzzle_mode():
 
 
 def print_puzzle(puzzle):
-    # FUTURE: ADAPT TO ACCEPT N PUZZLES
     for i in range(0, 3):
-        print(puzzle[i], '\n')
+        print(puzzle[i])
 
 
 def select_and_init_algorithm(puzzle):
@@ -89,7 +93,7 @@ def select_and_init_algorithm(puzzle):
         uniform_cost_search(puzzle, 2)
 
 
-def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of how many nodes expanded
+def uniform_cost_search(puzzle, heuristic):
 
     starting_node = TreeNode.TreeNode(None, puzzle, 0, 0)
     working_queue = []
@@ -105,20 +109,14 @@ def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of h
         max_queue_size = max(len(working_queue), max_queue_size)
         # the node from the queue being considered/checked
         node_from_queue = min_heap_esque_queue.heappop(working_queue)
-        repeated_states[node_from_queue.board_to_tuple()] = "hell"
-        # moved to line 95 -- no difference was made
-        # print(node_from_queue.board, node_from_queue.g_n)
+        repeated_states[node_from_queue.board_to_tuple()] = "This can be anything"
         if node_from_queue.solved():  # check if the current state of the board is the solution
-            print("This message indicates the puzzle was solved. Printing was skipped.")
-            # while len(stack_to_print) > 0:
-            #    node_to_print = stack_to_print.pop()
-            #    print(node_to_print)
-            print(node_from_queue.board)
-            print("Number of nodes expanded: ")
-            print(num_nodes_expanded)
+            while len(stack_to_print) > 0:  # the stack of nodes for the traceback
+                print_puzzle(stack_to_print.pop())
+            print("Number of nodes expanded:", num_nodes_expanded)
             print("Max queue size:", max_queue_size)
             return node_from_queue
-        # push the non-duplicate parent boards to stack
+
         stack_to_print.append(node_from_queue.board)
         # expand children : children_from_node is a list of expanded children's nodes
         children_from_node = node_from_queue.expand_children(heuristic)
@@ -137,37 +135,6 @@ def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of h
 
     return
 
-
-# FUTURE: N PUZZLE
-def create_goal_state_board(puzzle_size):
-
-    # puzzle_dimensions = (puzzle_size + 1) / 3
-    # if (puzzle_size + 1) % 3 == 0:
-    #    print("Invalid puzzle size. Please ensure the size of your puzzle = 3n + 1, for any natural number n.")
-
-    # goal_state_row = []
-    # goal_state_board = []
-    # puzzle_size_counter = copy.deepcopy(puzzle_size)
-    # for i in range(0, puzzle_size_copy):
-    #    for j in range(0, puzzle_dimensions):
-    #        goal_state_row = goal_state_row.append[puzzle_size_counter]
-    #        puzzle_size_counter -= 1
-    #        if len(goal_state_row) != 8:
-    #            goal_state_row.append[0]
-    #    goal_state_board.append[goal_state_row]
-
-    # for i in range(0, puzzle_size):
-    #    for j in range(0, 3):
-    #        goal_state_row = goal_state_row.append(puzzle_size_counter)
-    #        puzzle_size_counter -= 1
-    #    if len(goal_state_row) != 8:
-    #        goal_state_row.append[0]
-    #    goal_state_board.append(goal_state_row)
-
-    # print(goal_state_board)  # TODO: REMOVE LATER; PRESENT FOR TESTING PURPOSES
-    # return goal_state_board
-
-    return
 
 if __name__ == '__main__':
     main()
