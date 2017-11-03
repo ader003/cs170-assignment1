@@ -83,10 +83,10 @@ class TreeNode:
 
         return board_copy
 
-    def board_to_tuple(self):  # FUTURE: MAKE IT HANDLE N PUZZLES
+    def board_to_tuple(self):
         return tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])
 
-    def solved(self):  # FUTURE: CHANGE TO ACCEPT N PUZZLE
+    def solved(self):
         return self.board == eight_goal_state
 
     def find_misplaced_distance(self):
