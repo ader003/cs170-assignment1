@@ -1,4 +1,5 @@
 import TreeNode
+import copy
 import heapq as min_heap_esque_queue  # because it kinda acts like a min heap
 
 trivial = [[1, 2, 3],
@@ -19,7 +20,6 @@ oh_boy = [[8, 7, 1],
 impossible = [[1, 2, 3],
               [4, 5, 6],
               [8, 7, 0]]
-userPuzzle_string = " "
 
 # FUTURE: CHANGE TO ACCEPT N PUZZLE
 eight_goal_state = [[1, 2, 3],
@@ -33,13 +33,19 @@ def main():
     if puzzle_mode == "1":
         select_and_init_algorithm(init_default_puzzle_mode())
 
-    if puzzle_mode == "2": # TODO: IMPLEMENT
-        print("Enter your puzzle, using a zero to represent the blank. " +
-              "Enter each row using a space or tab between each number. RET only when finished." + '\n')
-        input(userPuzzle_string)
-        user_puzzle = [x for x in userPuzzle_string] # user puzzle board
-        print(user_puzzle)  # TODO: delete; temporary for for testing purposes
-        create_goal_state_board(len(user_puzzle))
+    if puzzle_mode == "2":  # TODO: IMPLEMENT
+        user_puzzle_string = input("Enter your puzzle, using a zero to represent the blank. " +
+                                   "Please only enter valid 8-puzzles. Enter the puzzle demilimiting " +
+                                   "the numbers with a space. RET only when finished." + '\n')
+        print("User puzzle string: ", user_puzzle_string, '\n')  # TODO: delete; temporary for for testing purposes
+        user_puzzle = user_puzzle_string.split()
+        for i in range(0, len(user_puzzle)):
+            user_puzzle[i] = int(user_puzzle[i])
+        # print("User puzzle (list): ", user_puzzle)
+        # print("Length of user puzzle: ", len(user_puzzle))
+        # create_goal_state_board(len(user_puzzle))
+        select_and_init_algorithm(user_puzzle)
+
     return
 
 
@@ -131,19 +137,37 @@ def uniform_cost_search(puzzle, heuristic):  # basically BFS, keeping track of h
 
     return
 
+
 # FUTURE: N PUZZLE
 def create_goal_state_board(puzzle_size):
 
-    puzzle_dimensions = (puzzle_size + 1) / 3
-    if (puzzle_size + 1) % 3:
-        print("Invalid puzzle size. Please ensure the size of your puzzle = 3n + 1, for any natural number n.")
+    # puzzle_dimensions = (puzzle_size + 1) / 3
+    # if (puzzle_size + 1) % 3 == 0:
+    #    print("Invalid puzzle size. Please ensure the size of your puzzle = 3n + 1, for any natural number n.")
 
-    goal_state_board = [x for x in range(0, puzzle_dimensions)]  # user puzzle goal state board
-    goal_state_node = TreeNode.TreeNode(None, goal_state_board, 0, 0)  # user puzzle goal state node
-    goal_state_tuples = goal_state_node.board_to_tuple()  # user puzzle goal state tuple
+    # goal_state_row = []
+    # goal_state_board = []
+    # puzzle_size_counter = copy.deepcopy(puzzle_size)
+    # for i in range(0, puzzle_size_copy):
+    #    for j in range(0, puzzle_dimensions):
+    #        goal_state_row = goal_state_row.append[puzzle_size_counter]
+    #        puzzle_size_counter -= 1
+    #        if len(goal_state_row) != 8:
+    #            goal_state_row.append[0]
+    #    goal_state_board.append[goal_state_row]
 
-    print(goal_state_tuples)  # TODO: REMOVE LATER; PRESENT FOR TESTING PURPOSES
-    return goal_state_board
+    # for i in range(0, puzzle_size):
+    #    for j in range(0, 3):
+    #        goal_state_row = goal_state_row.append(puzzle_size_counter)
+    #        puzzle_size_counter -= 1
+    #    if len(goal_state_row) != 8:
+    #        goal_state_row.append[0]
+    #    goal_state_board.append(goal_state_row)
+
+    # print(goal_state_board)  # TODO: REMOVE LATER; PRESENT FOR TESTING PURPOSES
+    # return goal_state_board
+
+    return
 
 if __name__ == '__main__':
     main()

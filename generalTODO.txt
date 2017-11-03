@@ -1,1 +1,1 @@
-we should be done, assignment wise
+1. User inputted 8 puzzle

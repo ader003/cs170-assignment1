@@ -27,11 +27,23 @@
 \section{Introduction}
 
 This assignment is the first project in Dr. Eamonn Keogh's Introduction to AI
-course at the University of California, Riveside during the fall quarter of
+course at the University of California, Riveside during the quarter of Fall
 2017. The following write up is to detail my findings through the course of
 project completion. \\ \\ It explores Uniform Cost Search, and the Misplaced Tile and
 Manhattan Distance heursitics applied to A*. My lanugage of choice was Python
 (version 3), and the full code for the project is included.
+
+\section{The Code}
+Relevant files:
+\begin{itemize}
+\item nPuzzle.py
+\item TreeNode.py
+\end{itemize}
+
+Running is as follows:
+\begin{verbatim}
+python3 nPuzzle.py
+\end{verbatim}
 
 \section{Comparison of Algorithms}
 The three algorithms implemented are as follows: Uniform Cost Search, A* using
@@ -41,7 +53,8 @@ the Misplaced Tile heuristic, and A* using the Manhattan Distance heuristic.
 There were six puzzles of varying ''difficulty'' given to implement. The easiest
 of the six is a trivial puzzle (already the goal state) and the hardest puzzle
 is impossible to solve (the goal state, but the position of tiles 7 and 8
-swapped).
+swapped). While the feature of user-inputted puzzles supported, this write up
+will only use Dr. Keogh's in examples.
 
 
 \subsection{Mathematic Verification} %some proof that the actual space complexity is

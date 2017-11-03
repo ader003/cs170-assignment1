@@ -10,3 +10,5 @@
 3. Playing the nPuzzle
 
 4. better function names
+
+5. handle decimals inputted into user_puzzle ; at the moment, everything is converted to an int
