@@ -4,7 +4,6 @@
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
-
 \usepackage{multicol}
 
 %% Sets page size and margins
@@ -48,20 +47,21 @@ and each expanded node will have a cost of 1.
 \subsection{The Misplaced Tile Heuristic}
 The second algorithm implemented is A* with the \textbf{Misplaced Tile Heuristic}. The
 heuristic looks to the number of ``misplaced'' tiles in a puzzle. For example:
+
+\begin{multicols}{2}
 \begin{verbatim}
 A puzzle:
 [[1, 2, 4],
  [3, 0, 6],
  [7, 8, 5]]
 \end{verbatim}
-
-...and it's goal state:
 \begin{verbatim}
 goal state:
 [[1, 2, 3],
  [4, 5, 6],
  [7, 8, 0]]
 \end{verbatim}
+  \end{multicols}
 
 Not counting 0 (the placeholder for the blank/missing tile), g(n) is set to the
  number of tiles not in their current goal state position are counted; in this
@@ -77,162 +77,104 @@ Not counting 0 (the placeholder for the blank/missing tile), g(n) is set to the
  misplaced tiles, but has a different rationale to it. The heuristic considers
  all of the misplaced tiles \textit{and} the number of tiles away from its goal
  state position would be. The resulting g(n) is the sum of all the cost of all
- misplaced tile distances. Using the example above:
-\begin{verbatim}
-A puzzle:
-[[1, 2, 4],
- [3, 0, 6],
- [7, 8, 5]]
+ misplaced tile distances.
 
-goal state:
-[[1, 2, 3],
- [4, 5, 6],
- [7, 8, 0]]
-
-\end{verbatim}
-Not counting the position of 0, it can be seen that tiles 4, 3, and 5 are out of
-place. Based on their positions in the puzzle and their goal state positions,
-g(n) = 8. 
+ Using the same example above, not counting the position of 0, it can be seen
+ that tiles 4, 3, and 5 are out of place. Based on their positions in the puzzle
+ and their goal state positions, g(n) = 8.
+ 
 \subsection{Comparison of Algorithms on Sample Puzzles}
 There were six puzzles of varying difficulty given to implement. The easiest
 of the six is a trivial puzzle (the puzzle being the goal state) and the hardest puzzle
 is impossible to solve (the goal state, but the position of tiles 7 and 8
 swapped). The puzzle configurations themselves can be seen in nPuzzle.py.
-See Figure 1 and Figure 2 for a visual representation of the number of nodes
+See Figure 1 (page 3) and Figure 2 (page 4) for a visual representation of the number of nodes
 expanded and the maximum queue size, respectively. \\ \\ It was found that the
 difference between the three algorithms was relatively negligible when given
 easier puzzles, but the heuristics (and how good the heuristic was) made a
 significant difference in the space complexity when solving more difficult but
-still solvable puzzles. 
+still solvable puzzles.
+
+\section{Additional Examples}
+For the sake of comparison, I have a few made up puzzles, and run each of the
+algorithms on them. See Figures 3 (page 5) and 4 (page 6) for a comparison of the number of nodes
+expanded, and the maximum queue size reached.
+
+\begin{multicols}{5}
+  \begin{verbatim}
+  Puzzle 1:
+  [[5, 1, 3],
+   [8, 6, 0],
+   [2, 7, 4]]
+
+  Puzzle 2:
+  [[4, 8, 0],
+   [6, 5, 7],
+   [3, 2, 1]]
+
+  Puzzle 3:
+  [[3, 5, 8],
+   [4, 2, 6],
+   [0, 1, 7]]
+
+  Puzzle 4:
+  [[5, 1, 8],
+   [2, 4, 6],
+   [7, 3, 0]]
+
+  Puzzle 5:
+  [[5, 1, 3],
+   [8, 6, 0],
+   [2, 7, 4]]
+   \end{verbatim}
+ \end{multicols}
 
 \begin{figure}
   \centering
+   \caption{The Number of Nodes Expanded, Preset Puzzles}
   \includegraphics[width=\paperwidth, angle=90]{Number Nodes Expanded.png}
-  \label{Figure 1}
+ 
 \end{figure}
 
 \begin{figure}
   \centering
+    \caption{The Maximum Queue Size, Preset Puzzles}
   \includegraphics[width=\paperwidth, angle=90]{Maximum Queue Size.png}
-  \label{Figure 2}
+
 \end{figure}
 
-\section{Mathematic Verification} %some proof that the actual space complexity is
-                                %consistent with the theory space complexity
-\section{Example Traceback}
-This section is the output (in three columns) from the assignment on puzzle 3,
-Doable, for Uniform Cost Search and the Misplaced Tile heuristic. \\
+\begin{figure}
+  \centering
+    \caption{The Number of Nodes Expanded, Randomly Generated Puzzles}
+  \includegraphics[width=\paperwidth, angle=90]{Puzzles Number Nodes Expanded.png}
 
-\begin{multicols}{3}
-  [
-  Algorithm: Uniform Cost Search, Puzzle: Doable
-  Nodes expanded: 30, Max queue size: 16
-  ]
-\begin{verbatim}
+\end{figure}
 
-[4, 1, 2]
-[5, 3, 0]
-[7, 8, 6]
+\begin{figure}
+  \centering
+    \caption{The Maximum Queue Size, Randomly Generated Puzzles}
+  \includegraphics[width=\paperwidth, angle=90]{Puzzles Maximum Queue Size.png}
 
-[4, 0, 2]
-[5, 1, 3]
-[7, 8, 6]
+\end{figure}
 
-[4, 1, 2]
-[5, 8, 3]
-[7, 0, 6]
-
-[1, 5, 2]
-[4, 3, 0]
-[7, 8, 6]
-
-[1, 5, 2]
-[4, 8, 3]
-[7, 0, 6]
-
-[1, 5, 2]
-[0, 4, 3]
-[7, 8, 6]
-
-[4, 1, 2]
-[7, 5, 3]
-[8, 0, 6]
-
-[1, 2, 3]
-[4, 5, 0]
-[7, 8, 6]
-
-[1, 5, 2]
-[4, 0, 3]
-[7, 8, 6]
-
-[4, 1, 2]
-[7, 5, 3]
-[0, 8, 6]
-
-[4, 1, 2]
-[5, 0, 3]
-[7, 8, 6]
-
-[1, 2, 0]
-[4, 5, 3]
-[7, 8, 6]
-
-[4, 1, 2]
-[0, 5, 3]
-[7, 8, 6]
-
-[1, 0, 2]
-[4, 5, 3]
-[7, 8, 6]
-
-[0, 1, 2]
-[4, 5, 3]
-[7, 8, 6]
-
-\end{verbatim}
-\end{multicols}
-\begin{multicols} {3}
-  [
-  Algorithm: Misplaced Tile Heuristic, Puzzle: Doable
-  Nodes expanded: 15, Max queue size: 9
-  ]
-\begin{verbatim}
-
-[1, 2, 3]
-[4, 0, 5]
-[7, 8, 6]
-
-[1, 2, 3]
-[4, 5, 0]
-[7, 8, 6]
-
-[1, 5, 2]
-[4, 0, 3]
-[7, 8, 6]
-
-[1, 2, 0]
-[4, 5, 3]
-[7, 8, 6]
-
-[4, 1, 2]
-[0, 5, 3]
-[7, 8, 6]
-
-[1, 0, 2]
-[4, 5, 3]
-[7, 8, 6]
-
-[0, 1, 2]
-[4, 5, 3]
-[7, 8, 6]
-
-\end{verbatim}
-\end{multicols}
-
-%\section{Closing Thoughts}
-% The most interesting thing to me was realizing that as impractical Breadth First Search and
-% Depth First Search are in the context of real world problems, they are still the
-% heart of some practical, feasible algorithms used for such real world problems.
+\section{Conclusion}
+Considering the list of the three algorithms and the comparisons between them:
+Uniform Cost Search, Misplaced Tiles, and Manhattan Distance, it can be said that:
+\begin{itemize}
+  \item It can be seen that out of the three algorithms, the Manhattan Distance
+    Heuristic performed the best, followed by the Misplaced Tiles Heuristic,
+    followed by Uniform Cost Search (or in this case, effectively also called
+    Breadth-First Search).
+\item The Misplaced Tile and Manhattan Distance heuristics improve the
+  efficiency of algorithms. Uniform Cost Search, h(n) having been hardcoded to
+  0, became Breadth First Search, which has a time complexity of $O(b^d)$ and
+  also a space complexity of $O(b^d)$, where $b$ is the branching factor and $d$
+  is the depth of the solution in the search tree.
+  \item While both the Misplaced Tile Heuristic and Manhattan Distance Heuristic
+    improved the run time and space cost of Uniform Cost Search, it is clear
+    that the Manhattan Distance Heuristic performed better between the two.
+    It can be concluded that while an relevant heuristic will perform better
+    than a blind search, not all heuristics are made equal.
+  \end{itemize}
 
 \end{document}

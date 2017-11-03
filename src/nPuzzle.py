@@ -112,8 +112,9 @@ def uniform_cost_search(puzzle, heuristic):
         node_from_queue = min_heap_esque_queue.heappop(working_queue)
         repeated_states[node_from_queue.board_to_tuple()] = "This can be anything"
         if node_from_queue.solved():  # check if the current state of the board is the solution
-            while len(stack_to_print) > 0:  # the stack of nodes for the traceback
-                print_puzzle(stack_to_print.pop())
+            print("Traceback printing skipped.")
+            # while len(stack_to_print) > 0:  # the stack of nodes for the traceback
+            #    print_puzzle(stack_to_print.pop())
             print("Number of nodes expanded:", num_nodes_expanded)
             print("Max queue size:", max_queue_size)
             return node_from_queue

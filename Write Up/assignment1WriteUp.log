@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 NOV 2017 01:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 NOV 2017 06:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -668,20 +668,20 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./assignment1WriteUp.aux)
 \openout1 = `assignment1WriteUp.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -752,7 +752,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box66
-Package hyperref Info: Link coloring ON on input line 22.
+Package hyperref Info: Link coloring ON on input line 21.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -762,97 +762,138 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count154
 )
-LaTeX Info: Redefining \ref on input line 22.
-LaTeX Info: Redefining \pageref on input line 22.
-LaTeX Info: Redefining \nameref on input line 22.
+LaTeX Info: Redefining \ref on input line 21.
+LaTeX Info: Redefining \pageref on input line 21.
+LaTeX Info: Redefining \nameref on input line 21.
 
 (./assignment1WriteUp.out) (./assignment1WriteUp.out)
 \@outlinefile=\write4
 \openout4 = `assignment1WriteUp.out'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--37
+Underfull \hbox (badness 10000) in paragraph at lines 30--36
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 51.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 52.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [1
-
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 97--107
+)
+Underfull \hbox (badness 10000) in paragraph at lines 87--97
 
  []
 
+[1
 
-LaTeX Warning: File `Number Nodes Expanded.png' not found on input line 110.
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-<Number Nodes Expanded.png, id=51, 1104.125pt x 797.98125pt>
+LaTeX Warning: File `Number Nodes Expanded.png' not found on input line 135.
+
+<Number Nodes Expanded.png, id=52, 1104.125pt x 797.98125pt>
 File: Number Nodes Expanded.png Graphic file (type png)
 
 <use Number Nodes Expanded.png>
-Package pdftex.def Info: Number Nodes Expanded.png used on input line 110.
+Package pdftex.def Info: Number Nodes Expanded.png used on input line 135.
 (pdftex.def)             Requested size: 597.50787pt x 431.8532pt.
 
-Overfull \hbox (7.00581pt too wide) in paragraph at lines 110--112
+Overfull \hbox (7.00581pt too wide) in paragraph at lines 135--136
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 2.72913pt on input line 112.
+LaTeX Warning: Float too large for page by 10.5603pt on input line 137.
 
 
-LaTeX Warning: File `Maximum Queue Size.png' not found on input line 116.
+LaTeX Warning: File `Maximum Queue Size.png' not found on input line 142.
 
-<Maximum Queue Size.png, id=53, 1113.15875pt x 814.04124pt>
+<Maximum Queue Size.png, id=54, 1113.15875pt x 814.04124pt>
 File: Maximum Queue Size.png Graphic file (type png)
 
 <use Maximum Queue Size.png>
-Package pdftex.def Info: Maximum Queue Size.png used on input line 116.
+Package pdftex.def Info: Maximum Queue Size.png used on input line 142.
 (pdftex.def)             Requested size: 597.50787pt x 436.95483pt.
 
-Overfull \hbox (12.10745pt too wide) in paragraph at lines 116--118
+Overfull \hbox (12.10745pt too wide) in paragraph at lines 142--143
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--125
+LaTeX Warning: File `Puzzles Number Nodes Expanded.png' not found on input line
+ 149.
 
+<Puzzles Number Nodes Expanded.png, id=55, 1073.00874pt x 738.76pt>
+File: Puzzles Number Nodes Expanded.png Graphic file (type png)
+
+<use Puzzles Number Nodes Expanded.png>
+Package pdftex.def Info: Puzzles Number Nodes Expanded.png used on input line 1
+49.
+(pdftex.def)             Requested size: 597.50787pt x 411.38062pt.
+
+
+LaTeX Warning: Float too large for page by 49.18976pt on input line 151.
+
+
+LaTeX Warning: File `Puzzles Maximum Queue Size.png' not found on input line 15
+6.
+
+<Puzzles Maximum Queue Size.png, id=56, 1072.005pt x 786.94pt>
+File: Puzzles Maximum Queue Size.png Graphic file (type png)
+
+<use Puzzles Maximum Queue Size.png>
+Package pdftex.def Info: Puzzles Maximum Queue Size.png used on input line 156.
+
+(pdftex.def)             Requested size: 597.50787pt x 438.61807pt.
+
+Overfull \hbox (13.77069pt too wide) in paragraph at lines 156--157
+ [][] 
  []
 
-[2] [3 <./Number Nodes Expanded.png>] [4 <./Maximum Queue Size.png>] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 238.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 238.
 
-(./assignment1WriteUp.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 238.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 238.
+LaTeX Warning: Float too large for page by 32.5827pt on input line 158.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 164.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 164.
+ [2] [3 <./Number Nodes Expanded.png>] [4 <./Maximum Queue Size.png>] [5 <./Puz
+zles Number Nodes Expanded.png>] [6 <./Puzzles Maximum Queue Size.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 180.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 180.
+ (./assignment1WriteUp.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 180.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 180.
 Package rerunfilecheck Info: File `assignment1WriteUp.out' has not changed.
-(rerunfilecheck)             Checksum: EF24756FFEE79D7691C6F9CB26C65171;533.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 238.
+(rerunfilecheck)             Checksum: A0B19A2EF39781AA41201A52144FE8C7;522.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 180.
  ) 
 Here is how much of TeX's memory you used:
- 17500 strings out of 492995
- 325613 string characters out of 6132704
- 417880 words of memory out of 5000000
- 20716 multiletter control sequences out of 15000+600000
- 13439 words of font info for 35 fonts, out of 8000000 for 9000
+ 17532 strings out of 492995
+ 326276 string characters out of 6132704
+ 416736 words of memory out of 5000000
+ 20739 multiletter control sequences out of 15000+600000
+ 13893 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,56p,489b,567s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,8n,56p,489b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></
-usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></us
-r/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/
-local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/lo
-cal/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/loca
-l/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/
-texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/te
-xlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on assignment1WriteUp.pdf (5 pages, 398207 bytes).
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/lo
+cal/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/loca
+l/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/
+texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/te
+xlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texl
+ive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texliv
+e/2017/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/
+2017/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on assignment1WriteUp.pdf (6 pages, 611802 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 87 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
