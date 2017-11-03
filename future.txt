@@ -1,4 +1,4 @@
-0. Option 2 -- User created puzzles, Puzzles of N size
+0. Option 2 -- User created puzzles, Puzzles of N size; will need to create_goal_state
 
 0.5) Makefile
 
